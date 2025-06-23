@@ -8,13 +8,24 @@
   ├── api // Laravelプロジェクト
   ```
 
-### 環境構築手順
+### 環境構築手順（Mac）
 
 - config に移動 `cd config`
 - `make init`で docker のコンテナ、server コンテナの nginx を起動する
 - POST: `http://localhost:8080/api/auth/signin` の API を次のパラメータで叩き `{"email": "user@lh.sandbox","password": "pass"}` でログインする。
 - http://localhost:8080 を確認
   - Laravel の初期画面が表示されれば OK
+
+### 環境構築手順（WSL（Windows））
+
+1. config に移動 `cd config`
+2. mysql ディレクトリ直下の data を削除 `sudo rm -rf mysql/data/`
+3. `make init`で docker のコンテナ、server コンテナの nginx を起動する
+4. `make db-fresh`で データベースをリセットする
+5. config から api に移動 `cd ../api`
+6. 権限を変更 `sudo chmod 777 . -R`（必ず api ディレクトリで実行してください）
+7. http://localhost:8080 を確認
+   - Laravel の初期画面が表示されれば OK
 
 ### API ドキュメント
 
